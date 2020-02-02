@@ -1,0 +1,21 @@
+# Gradle
+.gradle
+assembly
+build
+gradlew.bat
+
+# IDEA
+.idea
+.shelf
+out
+*.ipr
+*.iml
+*.iws
+
+.settings
+.classpath
+.project
+
+.env
+.ideaDataSources/
+dataSources/
