@@ -1,7 +1,7 @@
 package ru.yvzorin.someservice.application.userapplication;
 
-import ru.yvzorin.someservice.domain.model.analysis.Analysis;
-import ru.yvzorin.someservice.domain.model.userapplication.UserApplication;
+
+import ru.yvzorin.someservice.domain.model.kafedra.Kafedra;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -9,12 +9,11 @@ import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Yury Zorin
  */
-public class UserApplicationRequest {
+public class KafedraSaveRequest {
 
     @NotBlank(message = "The last name is required.")
     private String lastName;
@@ -30,11 +29,11 @@ public class UserApplicationRequest {
 
     private List<AnalysisData> analyses;
 
-    public UserApplicationRequest(@NotBlank String lastName,
-                                  @NotBlank String name,
-                                  String middleName,
-                                  @NotNull LocalDate birthDate,
-                                  List<AnalysisData> analyses) {
+    public KafedraSaveRequest(@NotBlank String lastName,
+                              @NotBlank String name,
+                              String middleName,
+                              @NotNull LocalDate birthDate,
+                              List<AnalysisData> analyses) {
         this.lastName = lastName;
         this.name = name;
         this.middleName = middleName;
@@ -62,11 +61,8 @@ public class UserApplicationRequest {
         return Collections.unmodifiableList(analyses);
     }
 
-    public UserApplication toDomain() {
-        List<Analysis> analyses = this.analyses.stream()
-                .map(analysis -> new Analysis(analysis.analysis))
-                .collect(Collectors.toList());
-        return new UserApplication(this.lastName, this.name, this.middleName, this.birthDate, analyses);
+    public Kafedra toDomain() {
+        return null;
     }
 
     private static class AnalysisData {

@@ -1,11 +1,10 @@
 package ru.yvzorin.someservice.port.adapter.webclient;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.yvzorin.someservice.application.userapplication.UserApplicationRequest;
-import ru.yvzorin.someservice.application.userapplication.UserApplicationService;
+import ru.yvzorin.someservice.application.userapplication.KafedraSaveRequest;
+import ru.yvzorin.someservice.application.userapplication.KafedraService;
 
 import javax.validation.Valid;
 
@@ -13,21 +12,25 @@ import javax.validation.Valid;
  * @author Yury Zorin
  */
 @RestController
-@RequiredArgsConstructor
 public class UserApplicationController {
 
     @Autowired
-    private UserApplicationService userApplicationService;
+    private KafedraService kafedraService;
+
+    public UserApplicationController(KafedraService kafedraService) {
+        this.kafedraService = kafedraService;
+    }
 
     @PostMapping("/api/application")
-    ResponseEntity<Object> createApplication(@RequestBody @Valid UserApplicationRequest request) {
-        this.userApplicationService.saveUserApplication(request);
+    ResponseEntity<Object> createApplication(@RequestBody @Valid KafedraSaveRequest request) {
+        this.kafedraService.saveKafedra(request);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/api/application/{id}")
-    ResponseEntity<Object> getApplication(@PathVariable Long id) {
+    @GetMapping("/api/kafedras/{id}")
+    ResponseEntity<Object> getKafedra(@PathVariable Long id) {
         return ResponseEntity.ok()
-                .body(this.userApplicationService.getUserApplication(id));
+                .body(this.kafedraService.getUserApplication(id));
+
     }
 }

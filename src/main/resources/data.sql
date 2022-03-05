@@ -1,2 +1,1 @@
-insert into applications(id, first_name, last_name, birth_date) values (1,'vasya', 'pupkin', '1991-01-01');
-insert into analyses(id, application_id, analysis) values (1,1, 'FMRI');
+insert into kafedras(id, number, year_of_establishment, zav_kaf, zam_zavkaf) values (1, 46, 2000, 'niki', 'pron');
