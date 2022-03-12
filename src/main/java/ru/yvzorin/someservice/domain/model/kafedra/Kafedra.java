@@ -2,7 +2,10 @@ package ru.yvzorin.someservice.domain.model.kafedra;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
@@ -15,14 +18,14 @@ import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 @JsonAutoDetect(fieldVisibility = ANY)
 public class Kafedra {
     @Column(nullable = false, updatable = false)
-    private final int yearOfEstablishment;
-    @Column(nullable = false, updatable = false)
-    private final int number;
+    private int yearOfEstablishment;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "application_id_generator")
-    private long id;
+    @Column(nullable = false, updatable = false)
+    private int number;
+
     @Column(nullable = false, updatable = true)
-    private String zavKaf;
+    private String zavKaf; //у колонки должно быть zav_kaf
 
     @Column(nullable = false, updatable = true)
     private String zamZavkaf;
@@ -34,6 +37,10 @@ public class Kafedra {
         this.zavKaf = zavKaf;
         this.zamZavkaf = zamZavkaf;
         this.number = number;
+    }
+
+    public Kafedra() {
+        //empty
     }
 
     public void changeZavKaf(String zavKaf) {

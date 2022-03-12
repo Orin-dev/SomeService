@@ -2,12 +2,12 @@ package ru.yvzorin.someservice.domain.model.kafedra;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Yury Zorin
  */
 public interface KafedraRepository extends JpaRepository<Kafedra, Long> {
 
-    List<Kafedra> findByNumber(int number);
+    Optional<Kafedra> findByNumber(int number);
 }

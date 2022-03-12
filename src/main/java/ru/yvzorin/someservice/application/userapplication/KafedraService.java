@@ -22,8 +22,8 @@ public class KafedraService {
         this.repository.save(request.toDomain());
     }
 
-    public Kafedra getUserApplication(Long id) {
-        return this.repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Кафедра с номером " + id + " не найдена."));
+    public Kafedra getKafedra(Integer number) {
+        return this.repository.findByNumber(number)
+                .orElseThrow(() -> new RuntimeException("Кафедра с номером " + number + " не найдена."));
     }
 }
