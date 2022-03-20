@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.yvzorin.someservice.domain.model.kafedra.Kafedra;
 import ru.yvzorin.someservice.domain.model.kafedra.KafedraRepository;
 
+import java.util.List;
+
 /**
  * @author Yury Zorin
  */
@@ -25,5 +27,13 @@ public class KafedraService {
     public Kafedra getKafedra(Integer number) {
         return this.repository.findByNumber(number)
                 .orElseThrow(() -> new RuntimeException("Кафедра с номером " + number + " не найдена."));
+    }
+
+    public List<Kafedra> getAllKafedras(Integer year) {
+        return this.repository.findByYearOfEstablishment(year);
+    }
+
+    public List<Kafedra> getAllKafedras() {
+        return this.repository.findAll();
     }
 }

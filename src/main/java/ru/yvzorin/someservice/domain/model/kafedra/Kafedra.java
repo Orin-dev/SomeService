@@ -68,6 +68,22 @@ public class Kafedra {
         return yearOfEstablishment == kafedra.yearOfEstablishment && number == kafedra.number && Objects.equals(zavKaf, kafedra.zavKaf) && Objects.equals(zamZavkaf, kafedra.zamZavkaf);
     }
 
+    public int yearOfEstablishment() {
+        return yearOfEstablishment;
+    }
+
+    public int number() {
+        return number;
+    }
+
+    public String zavKaf() {
+        return zavKaf;
+    }
+
+    public String zamZavkaf() {
+        return zamZavkaf;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(yearOfEstablishment, number, zavKaf, zamZavkaf);

@@ -16,9 +16,6 @@ import javax.validation.constraints.NotNull;
 public class KafedraSaveRequest {
 
     @NotNull(message = "Должно быть задано")
-    Integer yearOfEstablishment;
-
-    @NotNull(message = "Должно быть задано")
     Integer number;
 
     @NotBlank(message = "Должно быть задано")
@@ -26,6 +23,16 @@ public class KafedraSaveRequest {
 
     @NotBlank(message = "Должно быть задано")
     String zamZavkaf;
+
+    @NotNull(message = "Должно быть задано")
+    Integer yearOfEstablishment;
+
+    public KafedraSaveRequest(Integer number, String zavKaf, String zamZavkaf, Integer yearOfEstablishment) {
+        this.number = number;
+        this.zavKaf = zavKaf;
+        this.zamZavkaf = zamZavkaf;
+        this.yearOfEstablishment = yearOfEstablishment;
+    }
 
     public Kafedra toDomain() {
         return new Kafedra(this.zavKaf, this.zamZavkaf, this.yearOfEstablishment, this.number);
