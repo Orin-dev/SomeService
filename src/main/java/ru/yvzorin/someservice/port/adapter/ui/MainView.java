@@ -39,7 +39,7 @@ public class MainView extends VerticalLayout {
         HorizontalLayout content = new HorizontalLayout(grid, form);
         content.setFlexGrow(2, grid);
         content.setFlexGrow(1, form);
-        content.addClassNames("content");
+        content.addClassNames("content1");
         content.setSizeFull();
         return content;
     }
@@ -50,13 +50,14 @@ public class MainView extends VerticalLayout {
     }
 
     private void configureGrid() {
-        grid.addClassNames("kafedras-grid");
+        grid.addClassNames("kafedras-grid1");
         grid.setSizeFull();
 
-        grid.addColumn(Kafedra::number).setHeader("Номер");
         grid.addColumn(Kafedra::zavKaf).setHeader("Зеведующий");
-        grid.addColumn(Kafedra::zamZavkaf).setHeader("Зам");
+        grid.addColumn(Kafedra::number).setHeader("Номер");
         grid.addColumn(Kafedra::yearOfEstablishment).setHeader("Год основания");
+        grid.addColumn(Kafedra::zamZavkaf).setHeader("Зам");
+
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
     }
 
