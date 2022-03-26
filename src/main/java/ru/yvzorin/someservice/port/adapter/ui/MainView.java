@@ -56,8 +56,7 @@ public class MainView extends VerticalLayout {
         grid.addColumn(Kafedra::zavKaf).setHeader("Зеведующий");
         grid.addColumn(Kafedra::number).setHeader("Номер");
         grid.addColumn(Kafedra::yearOfEstablishment).setHeader("Год основания");
-        grid.addColumn(Kafedra::zamZavkaf).setHeader("Зам");
-
+        grid.addColumn(Kafedra::zamZavkaf).setHeader("Заместитель заведующего");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
     }
 
