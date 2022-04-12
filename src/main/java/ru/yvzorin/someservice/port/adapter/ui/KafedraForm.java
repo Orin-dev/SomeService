@@ -9,6 +9,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import ru.yvzorin.someservice.application.userapplication.KafedraSaveRequest;
 import ru.yvzorin.someservice.application.userapplication.KafedraService;
+import ru.yvzorin.someservice.domain.model.kafedra.Kafedra;
 
 /**
  * @author Yury Zorin <yuri.zorin@bostongene.com>
@@ -36,7 +37,8 @@ public class KafedraForm extends FormLayout {
                     zamzavKaf.getValue(),
                     Integer.valueOf(year.getValue())
             );
-            this.kafedraService.saveKafedra(request);
+            this.kafedraService.saveKafedraByRest(request);
+            Kafedra kafedra = this.kafedraService.getKafedraByRest(request.number());
         });
 
         add(kafedraNumber,

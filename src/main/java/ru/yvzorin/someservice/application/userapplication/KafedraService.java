@@ -20,6 +20,9 @@ public class KafedraService {
     @Autowired
     private KafedraRepository repository;
 
+    @Autowired
+    private KafedraRestClient restClient;
+
     public void saveKafedra(KafedraSaveRequest request) {
         this.repository.save(request.toDomain());
     }
@@ -29,6 +32,14 @@ public class KafedraService {
                 .orElseThrow(() -> new RuntimeException("Кафедра с номером " + number + " не найдена."));
     }
 
+    public void saveKafedraByRest(KafedraSaveRequest request) {
+        this.restClient.saveKafedra(request);
+    }
+
+    public Kafedra getKafedraByRest(Integer number) {
+        return this.restClient.getKafedra(number);
+    }
+
     public List<Kafedra> getAllKafedras(Integer year) {
         return this.repository.findByYearOfEstablishment(year);
     }
@@ -36,4 +47,5 @@ public class KafedraService {
     public List<Kafedra> getAllKafedras() {
         return this.repository.findAll();
     }
+
 }

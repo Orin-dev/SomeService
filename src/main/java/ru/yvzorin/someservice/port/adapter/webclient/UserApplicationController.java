@@ -29,10 +29,18 @@ public class UserApplicationController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/api/kafedras/{id}")
+    @GetMapping(value = "/api/kafedras/{id}", produces = "application/json")
     ResponseEntity<Object> getKafedra(@PathVariable @NotNull @DecimalMin(value = "1") Integer id) {
         return ResponseEntity.ok()
                 .body(this.kafedraService.getKafedra(id));
 
+    }
+
+    @PostMapping(value = "/api/example-with-params", consumes = "application/json")
+    ResponseEntity<Object> exampleWithParams(@RequestBody String request, @RequestParam(name = "patientName") String patientName, @RequestParam String imagePath) {
+        System.out.println("Your request " + request);
+        System.out.println("Patient name is " + patientName);
+        System.out.println("Image path is " + patientName);
+        return ResponseEntity.ok().body("Success.");
     }
 }

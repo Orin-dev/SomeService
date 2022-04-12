@@ -7,15 +7,12 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
-import com.vaadin.flow.router.Route;
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.yvzorin.someservice.application.userapplication.KafedraService;
 import ru.yvzorin.someservice.domain.model.kafedra.Kafedra;
 
 /**
  * @author Yury Zorin <yuri.zorin@bostongene.com>
  */
-@Route("")
 public class MainView extends VerticalLayout {
 
     private final KafedraService kafedraService;
@@ -24,7 +21,7 @@ public class MainView extends VerticalLayout {
     TextField filterText = new TextField();
     KafedraForm form;
 
-    public MainView(@Autowired KafedraService service) {
+    public MainView(KafedraService service) {
         this.kafedraService = service;
         addClassName("list-view");
         setSizeFull();

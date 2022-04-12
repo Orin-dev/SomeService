@@ -19,7 +19,7 @@ public class KafedraSaveRequest {
     Integer number;
 
     @NotBlank(message = "Должно быть задано")
-    String zavKaf; //у колонки должно быть zav_kaf
+    String zavKaf;
 
     @NotBlank(message = "Должно быть задано")
     String zamZavkaf;
@@ -36,5 +36,9 @@ public class KafedraSaveRequest {
 
     public Kafedra toDomain() {
         return new Kafedra(this.zavKaf, this.zamZavkaf, this.yearOfEstablishment, this.number);
+    }
+
+    public Integer number() {
+        return number;
     }
 }
